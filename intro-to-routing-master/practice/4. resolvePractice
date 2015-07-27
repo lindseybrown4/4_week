@@ -1,0 +1,44 @@
+//pass along a property called isAwesome with a value of true
+
+ $routeProvider.
+      when('/AddNewOrder', {
+        templateUrl: 'templates/add_order.html',
+        controller: 'AddOrderController',
+        resolve: {
+            isAwesome: true
+        }
+    })
+
+
+//pass along a property called isAwesome with a value of true
+
+ $routeProvider.
+      when('/AddNewOrder', {
+        templateUrl: 'templates/add_order.html',
+        controller: 'AddOrderController',
+        resolve: {
+        isAwesome: true
+        }
+    })
+
+
+//pass along a property called isAwesome with a value of true
+
+ $routeProvider.
+      when('/AddNewOrder', {
+        templateUrl: 'templates/add_order.html',
+        controller: 'AddOrderController',
+        resolve: {
+          isAwesome: true
+        }
+    })
+
+    start with languate or library you are working on 
+
+    ex. angular
+
+    then dealing with route "the core thing youre dealing with"
+
+    dont use "to the" , just use keywords like "resolve controller
+
+    anguarlar route resolve controller
