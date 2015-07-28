@@ -1,5 +1,5 @@
-<<!DOCTYPE html>
-<html ng app="miniRouting">
+<!DOCTYPE html>
+<html ng-app="miniRouting">
 <head>
 	<meta charsert="utf-8">
 	<meta http=equic="X-UA-Compatible" content="IE=edge">
@@ -7,12 +7,38 @@
 	<link rel="stylesheet" href="./style.css">
 </head>
 <body>
+<div class="menu">
+      <ul>
+        <li>
+          <a href="#/"> Home </a>
+        </li>
+        
+        <li>
+          Products
+          <ul>
+            <li><a href="#/products/shoes">Shoes</a></li>
+            <li><a href="#/products/socks">Socks</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#/settings"> Settings </a>
+        </li>
+      </ul>
+    </div>
+    <div class="view-container">
 
+      <ng-view></ng-view>
 
+    </div>
 
 <!-- Angular Core Library -->
 	<script src ="https://code.angularjs.org/1.4.3/angular.js"></script>
 <!-- Angular ng-route Library -->
 	<script src= "https://code.angularjs.org/1.4.3/angular-route.js"></script>
+	<script src="app.js"></script>
+	<script src="js/home/homeCtrl.js"></script>
+	<script src="js/products/productsCtrl.js"></script>
+	<script src="js/settings/settingsCtrl.js"></script>
+  <script src="js/products/productsService.js"></script>
 </body>
 </html>
