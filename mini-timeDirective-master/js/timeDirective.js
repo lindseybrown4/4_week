@@ -9,7 +9,4 @@ app.directive('showTime', function(){
 
 		}// end of link function
 	} // end of 1st object return 
-
-
-
 });  //end of directive

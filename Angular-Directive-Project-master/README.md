@@ -16,7 +16,7 @@ Now let's make our directive. We'll start with a simple one that we can use to d
 ## Step 1. Start your directive
 Woot. When you're initializing your directive just remember that it works very similarly to how you start up a controller or a service.
 It can also be very helpful to think of your directive as a route.
-- Create your directive. You'll use the directive method on your angular module. It takes two arguments, the name `string` and the callback function, which will return the object that represents your directive.
+- Create your directive. You'll use the directive method on your angular module. It takes two arguments, the name `string` and the callback function, which will return the object that represdents your directive.
 - When naming your directive give it a name with two words; `dirDisplay` would be nice, but anything works. *Just remember it's best practice to give a directive a camel case name so that it's clear in your html what it is.*
 - Also we're going to need a template html for our directive. We could do it inline, but let's make another file instead. Just name it something that makes sense for the name of your directive and put it in the same directory as your directive file.
 - For your template just make a `<div>` and inside a `<h1>` tag that says `User`.

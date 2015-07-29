@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="pokemonApp">
+
+	<head>
+		<title>Pokemon Application</title>
+	</head>
+	<body ng-controller="mainCtr">
+
+		<button ng-click="getData()">Get Data</button>
+
+		<div ng-repeat="poke in pokemon">
+			Name: {{poke.name | uppercase}} <br>
+			Happiness Level: {{poke.happiness}}<br>
+			Attack Level: {{poke.attack}} <br>
+			Species: {{poke.species | uppercase}} <br>
+		</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+	<!-- <script src="https://code.angularjs.org/1.4.3/angular-route.js</script"></script> -->
+	<script src="app.js"></script>
+	<script src="mainCtr.js"></script>
+	<script src="pokeService.js"></script>
+
+</body>
+</html>
