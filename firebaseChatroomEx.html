@@ -1,0 +1,181 @@
+<html ng-app="rtfmApp">
+
+<head>
+    <title>DM4 Firebase Chat App</title>
+</head>
+
+<body ng-app="firebaseChat">
+    <div ng-controller="chatCtrl">
+        <form name="loginForm" ng-if="!authData">
+            <fieldset>
+                <input type="email" ng-model="loginUser.email" placeholder="Email..." required>
+                <input type="password" ng-model="loginUser.password" placeholder="Password..." required>
+                <br>
+                <button ng-click="login(loginUser)" ng-disabled="loginForm.$invalid">Login</button>
+                <button ng-click="register(loginUser)" ng-disabled="loginForm.$invalid">Register</button>
+                <button ng-click="reset(loginUser)">Reset Password</button>
+                <button ng-click="googlePlus()">Sign in with Google +</button>
+            </fieldset>
+        </form> 
+        <div ng-if="authData">
+            <span>Logged in as: {{ authData.uid }}</span>
+            <button ng-click="authObj.$unauth()">Log Out</button>
+            <form name="userForm">
+                <fieldset>
+                    <input type="text" ng-model="user.name" placeholder="Name...">
+                    <input type="date" ng-model="birthday" placeholder="Birthday..." ng-change="setBirthday(birthday)">
+                    <input type="email" ng-model="email" placeholder="Email...">
+                    <input type="password" ng-model="oldPassword" placeholder="Old password...">
+                    <input type="password" ng-model="newPassword" placeholder="New password...">
+                    <input type="password" ng-model="newPasswordConfirmed" placeholder="New password again...">
+                    <button ng-click="changePassword(email, oldPassword, newPassword, newPasswordConfirmed);">Change Passwword</button>
+                </fieldset>
+            </form>
+        </div>
+        <ul>
+            <li ng-repeat="message in messages">
+                <span>Username: {{ message.username }}</span>
+                <div> {{ message.text }}</div>
+                <button ng-click="removeMessage(message)">Remove Me</button>
+            </li>
+        </ul>
+    </div>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <!-- Firebase -->
+    <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/1.1.1/angularfire.min.js"></script>
+    <script type="text/javascript">
+    (function() {
+        var app = angular.module('firebaseChat', ['firebase']);
+        app.controller('chatCtrl', function($scope, $firebaseArray, $firebaseObject, $firebaseAuth) {
+            /*
+             * Auth
+             */
+
+            // Creating auth object using root firebase and new Firebase
+            var firebaseRoot = "https://chris-rtfm.firebaseio.com/firebaseChatDM4",
+                ref = new Firebase(firebaseRoot),
+                authObj = $firebaseAuth(ref);
+
+            // Assign authObj to scope for inline calls in the view
+            $scope.authObj = authObj;
+
+            // Use $onAuth listener to keep $scope.authData synced. Also sync scope.user.
+            authObj.$onAuth(function(authData) {
+                $scope.authData = authData;
+
+                if (authData) { // Set up user object if authData present
+                    var userRef = new Firebase(firebaseRoot + '/users/' + authData.uid),
+                        user = $firebaseObject(userRef);
+
+                    user.$loaded().then(function(user) { // Wait for user to be loaded before setting user details
+                        user.lastLogin = new Date().toString();
+                        user.$save();
+                        user.$bindTo($scope, 'user');
+
+                        if (user.birthday) {
+                            $scope.birthday = new Date(user.birthday);
+                        }
+                    });
+
+                }
+            });
+
+            $scope.login = function(user) {
+                authObj.$authWithPassword(user).then(function(authData) {
+                    console.log('login authData', authData);
+                }, function(error) {
+                    alert(error);
+                });
+            };
+
+            $scope.register = function(user) {
+                authObj.$createUser(user).then(function(userData) {
+                    console.log('login userData', userData);
+                    $scope.login(user);
+                }, function(error) {
+                    alert(error);
+                });
+            };
+
+            $scope.reset = function(user) {
+                authObj.$resetPassword({
+                    email: user.email
+                }).then(function() {
+                    alert('Success! Password reset email sent.');
+                }, function(error) {
+                    alert('Error! ' + JSON.stringify(error));
+                });
+            };
+
+            $scope.changePassword = function(email, oldPassword, newPassword, newPasswordConfirmed) {
+                if (newPassword !== newPasswordConfirmed) {
+                    alert('Passwords do not match!');
+                } else {
+                    authObj.$changePassword({
+                        email: email,
+                        oldPassword: oldPassword,
+                        newPassword: newPassword
+                    }).then(function() {
+                        alert('success!');
+                    }, function(error) {
+                        alert('Failure! ' + JSON.stringify(error));
+                    });
+                }
+            };
+
+            $scope.googlePlus = function() {
+                authObj.$authWithOAuthPopup('google');  
+            };
+
+
+            /*
+             * Users
+             */
+            var usersRef = new Firebase(firebaseRoot + "/users");
+            var users = $firebaseArray(usersRef);
+
+            $scope.users = users;
+
+            $scope.addUser = function(user) {
+                users.$add(user);
+            };
+
+            $scope.setBirthday = function(birthday) {
+                if ($scope.user) {
+                    if (birthday) {
+                        $scope.user.birthday = birthday.toString();
+                    } else {
+                        delete $scope.birthday;
+                    }
+                }
+
+            };
+
+            /*
+             * Messages
+             */
+            var messagesRef = new Firebase("https://chris-rtfm.firebaseio.com/firebaseChatDM4/messages");
+            var messages = $firebaseArray(messagesRef);
+
+            $scope.messages = messages;
+
+            $scope.addMessage = function(text, username) {
+                messages.$add({
+                    text: text,
+                    username: username
+                });
+            };
+
+            $scope.removeMessage = function(message) {
+                messages.$remove(message);
+            };
+
+        });
+    })();
+    </script>
+</body>
+
+</html>

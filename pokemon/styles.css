@@ -1,0 +1,25 @@
+html, body {
+	background-color: lightblue;
+	
+}
+
+.pokemonview {
+	margin-right: 30px;
+	margin-left: 30px;
+	padding: 0px 0px 100px 100px;
+	font-style: helvetica;
+	font-size: 18px; 
+	position: center;
+
+}
+
+h1 {
+
+	width: 30%; 
+	dislay: inline-block;
+}
+
+text {
+	display: inline-block;
+
+}

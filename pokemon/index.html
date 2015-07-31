@@ -3,23 +3,34 @@
 
 	<head>
 		<title>Pokemon Application</title>
+		<link rel="stylesheet" type="text/css" href="./styles.css">
 	</head>
-	<body ng-controller="mainCtr">
+	<body>
+	<div class="pokemonview">
+			
+			<div class="space">
+				<ng-view></ng-view>
+				<ng-view></ng-view>	
+				<ng-view></ng-view>
+			</div>
 
-		<button ng-click="getData()">Get Data</button>
+	</div>
+		<!-- <button ng-click="getData()">Get Data</button> -->
 
-		<div ng-repeat="poke in pokemon">
-			Name: {{poke.name | uppercase}} <br>
+		<!-- <div ng-repeat="poke in pokemon"> -->
+			<!-- Name: {{poke.name | uppercase}} <br>
 			Happiness Level: {{poke.happiness}}<br>
 			Attack Level: {{poke.attack}} <br>
-			Species: {{poke.species | uppercase}} <br>
+			Species: {{poke.species | uppercase}} <br> -->
 		</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
-	<!-- <script src="https://code.angularjs.org/1.4.3/angular-route.js</script"></script> -->
-	<script src="app.js"></script>
-	<script src="mainCtr.js"></script>
-	<script src="pokeService.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
+	<script src="./js/app.js"></script>
+	<script src="./js/mainCtr.js"></script>
+	<script src="./js/pokeService.js"></script>
+	<script src="./js/pokeCtrl.js"></script>
+	<script src="./js/directives/pokeDir.js"></script>
 
 </body>
 </html>
