@@ -1,0 +1,18 @@
+<h1>Current Moon Phase</h1>
+
+{{phase.illumination}}
+{{illumination}}
+<!-- <form ng-click="getPhase()">
+	<label>Date</label><input type="text" placeholder="MM/DD/YYYY" ng-model="currentDate"> 
+	<input type="submit"></input>
+</form> -->
+
+	<label>Date</label><input type="text" placeholder="MM/DD/YYYY" ng-model="currentDate"> 
+	<input type="submit" ng-click="getPhase()"></input>
+
+	{{moonInfo}}
+
+<!-- 	<ul>
+		<li ng-repeat="info in moonInfo">{{}}</li>
+
+	</ul> -->

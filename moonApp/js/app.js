@@ -1,4 +1,4 @@
-var app = angular.module('moonApp', []); 
+var app = angular.module('moonApp', ['ngRoute']); 
 
 app.config(function($routeProvider){
 
@@ -6,16 +6,11 @@ app.config(function($routeProvider){
 
 		.when('/home', {
 			templateUrl: "/views/home.html",
-			controller: 'homeCtrl.js'
+			controller: 'homeCtrl'
 		}) 
 
-		.when('/views/:moon', {
-			templateUrl:'/views/moon.html'
-			controller: 'moonCtrl'
-		})
-
 		.when('/views/:phase', {
-			templateUrl: '/views/phase.html'
+			templateUrl: '/views/phase.html',
 			controller: 'phaseCtrl'
 		})
 
