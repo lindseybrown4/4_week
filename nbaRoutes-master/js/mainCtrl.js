@@ -33,4 +33,7 @@ app.controller('mainCtrl', function($scope){
     "Utah Jazz",
     "Washington Wizards"
   ];
+  $scope.teamData = teamData;
+  $scope.newGame = {}
+  $scope.showNewGameForm = 
 });

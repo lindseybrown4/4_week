@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="moonApp">
+  <head>
+    <meta charset="UTF-8">
+    <title> Current Lunar Phase </title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div class="main-container" ng-controller="mainCtrl">
+      <div class="menu">
+        <ul>
+          <li><a href="/#/"> Home </a></li>
+          <li><a href="/#/teams/utahjazz"> Moon Phases </a></li>
+          <li><a href="/#/teams/losangeleslakers"> Current Moon Image </a></li>
+        </ul>
+      </div>
+      <ng-view></ng-view>
+    </div>
+   
+      <!-- Angular -->
+       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.js"></script>
+      <!-- Angular Route -->
+      <script  src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.js"></script>
+      <!-- js Pages -->
+      <script src="./app.js"></script>
+      <script src="./js/controllers/moonCtrl.js"></script>
+      <script src="./js/controllers/phaseCtrl.js"></script>
+      <script src="./js/services/moonService.js"></script>
+      <script src="./js/services/phaseService.js"></script>
+  </body>
+</html>
