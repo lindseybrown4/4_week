@@ -1,0 +1,20 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	font-size: 10px;
+	background-color: steelblue;
+}
+
+
+}
+.dateInput {
+	display: inline-block;
+	width: 50%; 
+	float: right;
+
+}
+.report {
+	font-size: 20px;
+
+}

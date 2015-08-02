@@ -1,8 +1,8 @@
 app.service('phaseService', function($http, $q){
 
-	var handleResponse = function(webResponse) {
-		return webResponse.data;
-	};
+	// var handleResponse = function(webResponse) {
+	// 	return webResponse.data;
+	// };
 
 	this.getPhase = function(date) {
 

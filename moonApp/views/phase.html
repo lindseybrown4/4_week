@@ -1,18 +1,20 @@
 <h1>Current Moon Phase</h1>
+<div class="dateInput">
+	<label>Date</label><input type="date" ng-model="currentDate"></input>
+	<input type="submit" ng-click="getPhase()">
+	<br>
+</div>
 
-{{phase.illumination}}
-{{illumination}}
-<!-- <form ng-click="getPhase()">
-	<label>Date</label><input type="text" placeholder="MM/DD/YYYY" ng-model="currentDate"> 
-	<input type="submit"></input>
-</form> -->
+	<div class='report'>
+		<ul ng-repeat="info in moonInfo"></ul>
+			Moon Age:&nbsp;{{moonInfo.age}} days<br>
+			Illumination:&nbsp;{{moonInfo.illumination}}<br>
+			Stage:&nbsp;{{moonInfo.stage | uppercase}}<br>
+			Distance from Center of the Earth:&nbsp;{{moonInfo.DFCOE}}<br>
+			Distance from the Sun:&nbsp;{{moonInfo.DFS}}<br>
+		
+	</div>
 
-	<label>Date</label><input type="text" placeholder="MM/DD/YYYY" ng-model="currentDate"> 
-	<input type="submit" ng-click="getPhase()"></input>
 
-	{{moonInfo}}
+ 
 
-<!-- 	<ul>
-		<li ng-repeat="info in moonInfo">{{}}</li>
-
-	</ul> -->

@@ -1,9 +1,7 @@
 app.controller('phaseCtrl', function($scope, phaseService){
 
-	//$scope.phase = phaseService.getPhase(); 
-
 	$scope.getPhase = function() {
-		phaseService.getPhase($scope.currentDate).then(function(res) {
+		phaseService.getPhase(($scope.currentDate.getTime()) /1000).then(function(res) {
 			$scope.moonInfo = res;
 		});
 	};
