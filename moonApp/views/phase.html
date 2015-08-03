@@ -1,20 +1,22 @@
-<h1>Current Moon Phase</h1>
-<div class="dateInput">
-	<label>Date</label><input type="date" ng-model="currentDate"></input>
-	<input type="submit" ng-click="getPhase()">
-	<br>
+<div class="wrapper">
+	<h1>Lunar Data</h1>
+		<label>Date</label><input type="date" ng-model="currentDate"></input>
+		<input type="submit" ng-click="getPhase()">
+		<br>
+			<div class="menu">
+				<div ng-show="value">
+					<ul>
+						<li><span>Moon Age:</span>&nbsp;{{moonInfo.age | number: 0}} days</li>
+						<li><span>Illumination:</span>&nbsp;{{moonInfo.illumination | number:0}} % </li>
+						<li><span>Stage:</span>&nbsp;{{moonInfo.stage}} gibbous</li>
+						<li><span style="color: steelblue">Distance from Center of the Earth:</span>&nbsp;{{moonInfo.DFCOE | number:0}} kilometers </li>
+						<li><span>Distance from the Sun:</span>&nbsp;{{moonInfo.DFS | number:0}} kilometers </li>
+						<li><span>Recent Full Moon :</span>&nbsp;{{moonInfo.FM.DT}}</li>
+						<li><span>Next New Moon:</span>&nbsp;{{moonInfo.NNM.DT}}</li>
+					</ul>
+					<div class="black">
+						<li> <img src="{{moonInfo.picture}}"></li>	
+					</div>
+				</div>	
+			</div>
 </div>
-
-	<div class='report'>
-		<ul ng-repeat="info in moonInfo"></ul>
-			Moon Age:&nbsp;{{moonInfo.age}} days<br>
-			Illumination:&nbsp;{{moonInfo.illumination}}<br>
-			Stage:&nbsp;{{moonInfo.stage | uppercase}}<br>
-			Distance from Center of the Earth:&nbsp;{{moonInfo.DFCOE}}<br>
-			Distance from the Sun:&nbsp;{{moonInfo.DFS}}<br>
-		
-	</div>
-
-
- 
-

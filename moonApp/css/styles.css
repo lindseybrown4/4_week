@@ -1,20 +1,88 @@
-html, body {
+@import url(http://fonts.googleapis.com/css?family=Varela+Round);
+
+html {
 	height: 100%;
 	width: 100%;
 	margin: 0;
-	font-size: 10px;
-	background-color: steelblue;
+	color: white;
+	background-image: url('http://www.mrwallpaper.com/wallpapers/moon-stars-clouds-2880x1800.jpg');
+	background-size: 100%;
+	background-attachment: scroll;
+	font-family: Varela Round;
+	text-decoration: none;
+	
+}
+.wrapper {
+	margin: 0 auto; 
+	padding: 0 auto; 
+	width: 70%;
+	font-size: 20px;
+	color: white;
+	text-align: center;
 }
 
-
+.menu {
+	font-size: 20 px;
+	padding: 20px 0px;
+	margin: 0 auto;
+	list-style-type: none;
+	text-decoration: none; 
 }
+
+li {
+	padding: 5px;
+}
+
+a {
+	text-decoration: none;
+	color: steelblue;		
+	font-size: 15px;
+}
+
 .dateInput {
 	display: inline-block;
 	width: 50%; 
-	float: right;
+	padding: 50px;
+	position: 0 auto;
+}
+
+h1 {
+	padding-bottom: 50px;
+	margin: 0 auto;
+	text-align: center;
+	color: steelblue;
+}
+
+label {
+	color: steelblue;
+	text-align: center; 
+	margin: 5px 10px 5px 0px; 
+	line-height: 85%;
+
+ }
+
+ .steelblue {
+ 	color: steelblue;
+
+ }
+
+
+ul {
+	list-style-type: none; 
 
 }
-.report {
-	font-size: 20px;
 
+span {
+	color: steelblue;
 }
+
+img {
+	height: 100px;
+	width: 100px;
+/*}
+
+.black {
+	background-color: black;
+	width: 30%;
+	margin: 30px auto; 
+}*/
